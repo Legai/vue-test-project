@@ -10,7 +10,7 @@ const initialState = () => ({
 });
 
 function handleRequest(resolve, reject, state) {
-  const isDataValid = Sugar.Object.none(state.userData, (property) => property.length > 1);
+  const isDataValid = Sugar.Object.none(state.userData, (property) => property.length < 1);
 
   if (isDataValid) {
     resolve({
@@ -32,9 +32,9 @@ function handleRequest(resolve, reject, state) {
   };
 
   errorResponse.response.errors.userData = {
-    name: (state.userData.name.length > 1) ? 'Length error' : '',
-    surname: (state.userData.surname.length > 1) ? 'Length error' : '',
-    patronymic: (state.userData.patronymic.length > 1) ? 'Length error' : ''
+    name: (state.userData.name.length < 1) ? 'Name is too short' : '',
+    surname: (state.userData.surname.length < 1) ? 'Surname is too short' : '',
+    patronymic: (state.userData.patronymic.length < 1) ? 'Patronymic is too short' : ''
   };
 
   reject(errorResponse);
