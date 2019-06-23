@@ -66,7 +66,8 @@
         this.isSuccessful = false;
         this.errors = {};
 
-        return this.$store.dispatch('user/saveUserData')
+        return this.$store
+          .dispatch('user/saveUserData')
           .then(() => this.isSuccessful = true)
           .catch((exception) => this.errors = this.handleError(exception).userData)
           .finally(() => this.isLoading = false);

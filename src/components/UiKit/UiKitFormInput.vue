@@ -57,11 +57,6 @@
       }
     },
     data: () => ({
-      /**
-       * Generate unique string to bind input with label
-       *
-       * @return string
-       **/
       inputId: null
     }),
     mounted() {
